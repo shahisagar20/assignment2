@@ -97,7 +97,7 @@ public class DiffSets {
 				System.out.println(uniqueSet[i] + ",");
 
 			}
-			System.out.println(1 + count + "st loop "); // Counts the number of
+			System.out.println(1 + count + "th loop "); // Counts the number of
 														// iterations
 			count++;
 
@@ -138,7 +138,7 @@ public class DiffSets {
 		final long startTime = System.currentTimeMillis();// gets time at
 															// beginning of the
 															// program
-		DiffSets n = new DiffSets(9, 10, 10000);
+		DiffSets n = new DiffSets(1, 1, 100);
 		final long endTime = System.currentTimeMillis(); // gets time at the end
 															// of the program
 		System.out.println("Total execution time: " + (endTime - startTime)); // displays
