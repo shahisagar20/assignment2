@@ -9,11 +9,11 @@ import java.util.Stack;
  */
 
 public class Deck {
-	public static final int NCARDS = 52;	//Keeps the number of cards in the deck constant
+	private static final int NCARDS = 52;	//Keeps the number of cards in the deck constant
 	
 	
 	private Card[] deckOfCards;
-	private Card[] dealtCards;// Contains all 52 cards
+	private int[] notDealtCards = new int[52];// Contains all 52 cards
 	private int currentCard; // deal THIS card in deck
 
 	public Deck() // Constructor for Deck class
@@ -24,7 +24,9 @@ public class Deck {
 		
 		for (int suit = Card.SPADE; suit <= Card.CLUB; suit++)
 			for (int rank = 1; rank <= 13; rank++)
-				deckOfCards[i++] = new Card(suit, rank);
+				deckOfCards[i] = new Card(suit, rank);
+				notDealtCards[i] =0; 
+				i++;
 
 		currentCard = 0;
 		
@@ -52,7 +54,15 @@ public class Deck {
 	}
 	//This method will shuffle the deck and with the goodness factor
 	//0 for very good shuffle and 1 for no shuffling at all
-	public void shuffle( int goodness){
-		Deck d = new Deck();
+	public void shuffle(double goodness) {
+		int n= 52;
+		for (int i = 0; i < n; i++) {
+			int r=(int) (Math.random() * (goodness*52));
+			System.out.println(r);
+			Card temp = deckOfCards[r];
+			System.out.println(r);
+			deckOfCards[r] = deckOfCards[i];
+			deckOfCards[i] = temp;
+		}
 	}
 }

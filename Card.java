@@ -4,7 +4,7 @@ package assignment2;
  * This is the card class
  */
 
-public class Card implements Comparable{
+public class Card{
 	public static final int SPADE = 1; //Assigning an specific value to Spade, Diamond, Heart, and Club
 	public static final int DIAMOND = 2;
 	public static final int HEART = 3;
@@ -29,10 +29,11 @@ public class Card implements Comparable{
 		
 		return this.cardRank+" "+ this.cardSuit;
 	}
-
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String getSuit(){
+		return cardSuit;
 	}
+	public String getRank(){
+		return cardRank;
+	}
+	
 }

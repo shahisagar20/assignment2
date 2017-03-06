@@ -113,7 +113,7 @@ public class StackMax {
 
 		int x = 8;
 		while (x > 0) {
-			System.out.println("rerPop: " + max.pop());
+			System.out.println("regPop: " + max.pop());
 			System.out.println("maxPop: " + max.popMax());
 			x--;
 		}
