@@ -32,7 +32,7 @@ class Deck {
 	 */
 	public void shuffle(double goodness) {
 		for (int i = 0; i < n; i++) {
-			int r = i + (int) (Math.random() * goodness);
+			int r = (int) (Math.random()*i);
 			Card temp = deck[r];
 			deck[r] = deck[i];
 			deck[i] = temp;

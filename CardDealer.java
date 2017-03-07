@@ -24,7 +24,7 @@ public class CardDealer {
 		// total numbers of hands after the run
 		int totalHands = numberOfRuns * numberOfPlayers;
 
-		Hand hands[] = new Hand[numberOfPlayers];//hands for players
+		Hand hands[] = new Hand[numberOfPlayers];// hands for players
 
 		while (numberOfRuns > 0) {
 			Deck deck = new Deck(); // create Deck of cards
