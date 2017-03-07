@@ -99,7 +99,7 @@ public class StackMax {
 			return 0;
 		}
 	}
-
+//Test for the maxStack
 	public static void main(String[] args) {
 		StackMax max = new StackMax();
 		max.push(5);
@@ -114,6 +114,7 @@ public class StackMax {
 		int x = 8;
 		while (x > 0) {
 			System.out.println("regPop: " + max.pop());
+			System.out.println("getPop: " + max.getMax());
 			System.out.println("maxPop: " + max.popMax());
 			x--;
 		}

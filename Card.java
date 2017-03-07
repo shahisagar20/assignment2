@@ -1,39 +1,99 @@
 package assignment2;
-/* Sagar Shahi
- * Assignment #02
- * This is the card class
- */
 
-public class Card{
-	public static final int SPADE = 1; //Assigning an specific value to Spade, Diamond, Heart, and Club
-	public static final int DIAMOND = 2;
-	public static final int HEART = 3;
-	public static final int CLUB = 4;
-	
-	// Create the private Stances of suits and ranks so we can get different suits and ranks
-	private static final String[] suits = { "*", "Spade", "Diamond", "Heart", "Club" };
-	private static final String[] ranks = { "*", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+public class Card {
 
-	private String cardSuit;
-	private String cardRank;
-	
-	//Constructor for card class
-	public Card(int suit, int rank) {
-		this.cardRank = ranks[rank];
-		this.cardSuit = suits[suit];
-		
+	public final static int SPADES = 0, // Codes for the 4 suits.
+			DIAMONDS = 1, HEARTS = 2, CLUBS = 3;
+
+	public final static int ACE = 13, // Codes for the non-numeric cards.
+			JACK = 10, // Cards 2 through 10 have their
+			QUEEN = 11, // numerical values for their codes.
+			KING = 12;
+
+	private final int suit; // The suit of this card, one of the constants
+	// SPADES, HEARTS, DIAMONDS, CLUBS.
+
+	private final int value; // The value of this card, from 1 to 11.
+
+	public Card(int theValue, int theSuit) {
+		// Construct a card with the specified value and suit.
+		// Value must be between 1 and 13. Suit must be between
+		// 0 and 3. If the parameters are outside these ranges,
+		// the constructed card object will be invalid.
+		value = theValue;
+		suit = theSuit;
 	}
-	
-	//To print the card suit and rank
+
+	public int getSuit() {
+		// Return the int that codes for this card's suit.
+		return suit;
+	}
+
+	public int getValue() {
+		// Return the int that codes for this card's value.
+		return value;
+	}
+
+	public String getSuitAsString() {
+		// Return a String representing the card's suit.
+		// (If the card's suit is invalid, "??" is returned.)
+		switch (suit) {
+		case SPADES:
+			return "Spades";
+		case HEARTS:
+			return "Hearts";
+		case DIAMONDS:
+			return "Diamonds";
+		case CLUBS:
+			return "Clubs";
+		default:
+			return "??";
+		}
+	}
+
+	public String getValueAsString() {
+		// Return a String representing the card's value.
+		// If the card's value is invalid, "??" is returned.
+		switch (value) {
+		case 1:
+			return "2";
+		case 2:
+			return "3";
+		case 3:
+			return "4";
+		case 4:
+			return "5";
+		case 5:
+			return "6";
+		case 6:
+			return "7";
+		case 7:
+			return "8";
+		case 8:
+			return "9";
+		case 9:
+			return "10";
+		case 10:
+			return "Jack";
+		case 11:
+			return "Queen";
+		case 12:
+			return "King";
+		case 13:
+			return "Ace";
+		default:
+			return "??";
+		}
+	}
+
 	public String print() {
-		
-		return this.cardRank+" "+ this.cardSuit;
+		// Return a String representation of this card, such as
+		// "10 of Hearts" or "Queen of Spades".
+		return getValueAsString() + " of " + getSuitAsString();
 	}
-	public String getSuit(){
-		return cardSuit;
+
+	public void printCardType() {
+		System.out.println("Type of card " + getSuitAsString());
 	}
-	public String getRank(){
-		return cardRank;
-	}
-	
-}
+
+} // end class Card

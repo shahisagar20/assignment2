@@ -138,7 +138,7 @@ public class DiffSets {
 		final long startTime = System.currentTimeMillis();// gets time at
 															// beginning of the
 															// program
-		DiffSets n = new DiffSets(1, 1, 100);
+		DiffSets n = new DiffSets(100, 100, 100);
 		final long endTime = System.currentTimeMillis(); // gets time at the end
 															// of the program
 		System.out.println("Total execution time: " + (endTime - startTime)); // displays

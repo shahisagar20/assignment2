@@ -1,68 +1,62 @@
 package assignment2;
 
-import java.util.Stack;
+class Deck {
+	private String[] SUITS = { "Clubs", "Diamonds", "Hearts", "Spades" };
 
-/* Sagar Shahi
- * Assignment #2
- * Deck Class
- * 
- */
+	private String[] RANKS = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 
-public class Deck {
-	private static final int NCARDS = 52;	//Keeps the number of cards in the deck constant
-	
-	
-	private Card[] deckOfCards;
-	private int[] notDealtCards = new int[52];// Contains all 52 cards
-	private int currentCard; // deal THIS card in deck
+	private int dealtCounter;
 
-	public Deck() // Constructor for Deck class
-	{
-		deckOfCards = new Card[NCARDS];
+	// initialize deck
+	private int n = SUITS.length * RANKS.length;
+	private int[] D = new int[52]; // D = 1 then dealt D = 0 then no-dealt
+	public Card[] deck = new Card[52];;
+	/**
+	 * Constructor for the Deck class
+	 */
+	public Deck() {
+		int cardCt = 0; // How many cards have been created so far.
+		for (int suit = 0; suit <= 3; suit++) {
+			for (int value = 1; value <= 13; value++) {
+				deck[cardCt] = new Card(value, suit);
+				D[cardCt] = 0;
+				cardCt++;
 
-		int i = 0;
-		
-		for (int suit = Card.SPADE; suit <= Card.CLUB; suit++)
-			for (int rank = 1; rank <= 13; rank++)
-				deckOfCards[i] = new Card(suit, rank);
-				notDealtCards[i] =0; 
-				i++;
-
-		currentCard = 0;
-		
+			}
+		}
+		dealtCounter = 0;
 	}
-	//method dealOne
-	//This method will remove the card from the top of the deck to return it.
+
+	/**This method shuffles the deck
+	 * @ param Takes a double value as goodness
+	 */
+	public void shuffle(double goodness) {
+		for (int i = 0; i < n; i++) {
+			int r = i + (int) (Math.random() * goodness);
+			Card temp = deck[r];
+			deck[r] = deck[i];
+			deck[i] = temp;
+		}
+	}
+	/**This method deals the card to the players
+	 * 
+	 * @return Returns the card from top of the deck 
+	 */
 
 	public Card dealOne() {
-		if (currentCard < NCARDS) {
-			
-			return (deckOfCards[currentCard++]);
-			
-		} else {
-			System.out.println("Out of cards error");
-			return (null); // Error;
+		if (dealtCounter == deck.length)
+			throw new IllegalStateException("No cards are left in the deck.");
+		dealtCounter++;
+		return deck[dealtCounter - 1];
+	}
+
+	/**
+	 * This method prints the shuffled deck
+	 */
+	public void print() {
+		for (int i = 0; i < n; i++) {
+			System.out.println(deck[i]);
 		}
 	}
 
-	//This method will print the deck in the Not Deal order
-	public void print() {
-		for (int i=0; i<deckOfCards.length; i++){
-			 System.out.println( deckOfCards[i].print());
-		}
-		
-	}
-	//This method will shuffle the deck and with the goodness factor
-	//0 for very good shuffle and 1 for no shuffling at all
-	public void shuffle(double goodness) {
-		int n= 52;
-		for (int i = 0; i < n; i++) {
-			int r=(int) (Math.random() * (goodness*52));
-			System.out.println(r);
-			Card temp = deckOfCards[r];
-			System.out.println(r);
-			deckOfCards[r] = deckOfCards[i];
-			deckOfCards[i] = temp;
-		}
-	}
 }
